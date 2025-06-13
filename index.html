@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>VDR Project La Reserva</title>
+
+  <!-- Google Font Georama -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Georama:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* Reset global */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georama', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      overflow: hidden; /* ocultamos scroll hasta que cargue */
+    }
+
+    /* PRELOADER */
+    #preloader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .preloader-logo {
+      width: 120px;
+      height: auto;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50%      { transform: scale(1.05); opacity: 0.8; }
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 900px;
+      width: 100%;
+      margin: auto;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      visibility: hidden; /* se mostrará tras carga */
+    }
+    .hero img {
+      flex: 1 1 400px;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hero-content {
+      flex: 1 1 300px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .tag {
+      display: inline-block;
+      background: #BFA96B;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+    .hero-content h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero-content p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+    .btn {
+      margin-top: auto;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      color: #BFA96B;
+      border: 2px solid #BFA96B;
+      border-radius: 4px;
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #BFA96B;
+      color: #fff;
+    }
+    @media(max-width:768px){
+      .hero { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <img
+      src="https://filedn.eu/lCrPeDcxayYSagjP7cpbVB8/VDR%20Project%20La%20Reserva/logo.png"
+      alt="Lau-Tám Abogados"
+      class="preloader-logo"
+    >
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <img
+      id="hero-img"
+      src="https://filedn.eu/lCrPeDcxayYSagjP7cpbVB8/VDR%20Project%20La%20Reserva/lareserva.jpg"
+      alt="Project La Reserva"
+    >
+    <div class="hero-content">
+      <span class="tag">Virtual Data Room</span>
+      <h1>Project La Reserva</h1>
+      <p>Data Room para el Banco BBVA Perú</p>
+      <a
+        class="btn"
+        href="https://lautamlaw.sharepoint.com/:u:/r/teams/VDR_project_lareserva/SitePages/ProjectHome.aspx?csf=1&web=1&share=EWHuzJ0d8UpHp_TOeVvV49gBeUgzc4Uic8dfDOHGUVepoQ&e=ozCbUq"
+        target="_blank"
+      >
+        Ingresar al VDR →
+      </a>
+    </div>
+  </section>
+
+  <script>
+    // Oculta el preloader cuando la imagen principal haya cargado
+    const img = document.getElementById('hero-img');
+    const preloader = document.getElementById('preloader');
+    const hero = document.getElementById('hero');
+
+    function showContent() {
+      preloader.style.display = 'none';
+      hero.style.visibility = 'visible';
+      document.body.style.overflow = 'auto';
+    }
+
+    if (img.complete) {
+      showContent();
+    } else {
+      img.addEventListener('load', showContent);
+      img.addEventListener('error', showContent);
+    }
+  </script>
+</body>
+</html>
+
+
